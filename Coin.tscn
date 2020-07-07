@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.772549, 0.701961, 0.490196, 1 )
+
+[sub_resource type="CylinderMesh" id=3]
+material = SubResource( 2 )
+top_radius = 0.5
+bottom_radius = 0.5
+height = 0.05
+
+[node name="Area" type="KinematicBody" groups=[
+"coin",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354528, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -0.00188498, -0.999998, 0, 0.999998, -0.00188498, 0, 0, 0, 1, 0.0251009, 0.0845666, 0.0471218 )
+mesh = SubResource( 3 )
+material/0 = null

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Camera.cs" type="Script" id=1]
 [ext_resource path="res://RigidBody.cs" type="Script" id=2]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 100, 100 )
@@ -26,6 +27,8 @@ shape = SubResource( 2 )
 
 [node name="RigidBody" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09104, 0 )
+contacts_reported = 3
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
@@ -39,3 +42,17 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 0.817658, 0.575705, 0, -0.575705, 0.817658, 0, 7.51361, 9.48658 )
 script = ExtResource( 1 )
 player = NodePath("../RigidBody")
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.307307, 0.951611, 0, -0.951611, -0.307307, 0, 19.9315, -59.4273 )
+shadow_enabled = true
+
+[node name="Area" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.894675, 12.374 )
+
+[node name="Area2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93979, 0.894675, 12.374 )
+
+[node name="Area3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7421, 0.894675, 12.374 )
+[connection signal="body_entered" from="RigidBody" to="RigidBody" method="_on_RigidBody_body_entered"]

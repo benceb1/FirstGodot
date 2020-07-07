@@ -19,6 +19,10 @@ config/name="Advanced"
 run/main_scene="res://Spatial.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.cs"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

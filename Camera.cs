@@ -21,6 +21,6 @@ public class Camera : Godot.Camera
  public override void _Process(float delta)
  {
     
-    if (GetNodeOrNull(player) != null) Translation = (GetNode(player) as RigidBody).Translation - new Vector3(0, -10, -10);
+    if (GetNodeOrNull(player) != null) Translation = (GetNode(player) as RigidBody).Translation - new Vector3(0, -15, -15);
  }
 }
